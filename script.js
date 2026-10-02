@@ -44,7 +44,6 @@ function playRound(humanChoice, computerChoice) {
                     break;
                 case "paper":
                     console.log("It's a tie! No winner.");
-                    computerScore++;
                     break;
                 case "scissors":
                     console.log("You lose!");
@@ -69,10 +68,19 @@ function playRound(humanChoice, computerChoice) {
             break;
     }
     console.log(`You score is ${humanScore}`);
-    console.log(`Computer score is ${computerScore}`);
+    console.log(`Computer's score is ${computerScore}`);
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+function playGame() {
+    let round = 1;
 
-console.log(playRound(humanSelection, computerSelection));
+    while (round <= 5) {
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+
+        console.log(playRound(humanSelection, computerSelection));
+
+        round++;
+    }
+}
+console.log(playGame());
