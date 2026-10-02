@@ -1,3 +1,6 @@
+humanScore = 0;
+computerScore = 0;
+
 function getComputerChoice() {
     let computerNumber = Math.random() * 100;
     if (computerNumber <= 34) {
