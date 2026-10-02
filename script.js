@@ -1,5 +1,5 @@
-humanScore = 0;
-computerScore = 0;
+let humanScore = 0;
+let computerScore = 0;
 
 function getComputerChoice() {
     let computerNumber = Math.random() * 100;
@@ -15,3 +15,64 @@ function getComputerChoice() {
 function getHumanChoice() {
     return prompt("Select rock, paper, or scissors").toLowerCase();
 }
+
+function playRound(humanChoice, computerChoice) {
+    console.log(`Your choice: ${humanChoice}`);
+    console.log(`Computer's choice: ${computerChoice}`);
+
+    switch (humanChoice) {
+        case "rock":
+            switch (computerChoice) {
+                case "rock":
+                    console.log("It's a tie! No winner.");
+                    break;
+                case "paper":
+                    console.log("You lose!");
+                    computerScore++;
+                    break;
+                case "scissors":
+                    console.log("You win!");
+                    humanScore++;
+                    break;
+            }
+            break;
+        case "paper":
+            switch (computerChoice) {
+                case "rock":
+                    console.log("You win!");
+                    humanScore++;
+                    break;
+                case "paper":
+                    console.log("It's a tie! No winner.");
+                    computerScore++;
+                    break;
+                case "scissors":
+                    console.log("You lose!");
+                    computerScore++;
+                    break;
+            }
+            break;
+        case "scissors":
+            switch (computerChoice) {
+                case "rock":
+                    console.log("You lose!");
+                    computerScore++;
+                    break;
+                case "paper":
+                    console.log("You win!");
+                    humanScore++;
+                    break;
+                case "scissors":
+                    console.log("It's a tie! No winner");
+                    break;
+            }
+            break;
+    }
+    console.log(`You score is ${humanScore}`);
+    console.log(`Computer score is ${computerScore}`);
+}
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+console.log(playRound(humanSelection, computerSelection));
