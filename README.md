@@ -1,0 +1,1 @@
+Play rock-paper-scissors against the computer. The human player is prompted for an answer while the computer is randomly assigned one of three choices. The entire game is run in the console window. Logs choices for both players and tracks scores for a total of 5 rounds.
