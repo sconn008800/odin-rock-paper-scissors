@@ -1,6 +1,19 @@
 let humanScore = 0;
 let computerScore = 0;
 
+const rockButton = document.createElement("button");
+rockButton.textContent = "Rock";
+
+const paperButton = document.createElement("button");
+paperButton.textContent = "Paper";
+
+const scissorsButton = document.createElement("button");
+scissorsButton.textContent = "Scissors";
+
+const choiceSelection = document.querySelector(".player-choice");
+
+choiceSelection.append(rockButton, paperButton, scissorsButton);
+
 function getComputerChoice() {
     let computerNumber = Math.random() * 100;
     if (computerNumber <= 34) {
@@ -70,17 +83,3 @@ function playRound(humanChoice, computerChoice) {
     console.log(`You score is ${humanScore}`);
     console.log(`Computer's score is ${computerScore}`);
 }
-
-function playGame() {
-    let round = 1;
-
-    while (round <= 5) {
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-
-        console.log(playRound(humanSelection, computerSelection));
-
-        round++;
-    }
-}
-console.log(playGame());
