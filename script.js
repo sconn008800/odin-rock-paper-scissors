@@ -25,10 +25,6 @@ function getComputerChoice() {
     }
 }
 
-function getHumanChoice() {
-    return prompt("Select rock, paper, or scissors").toLowerCase();
-}
-
 function playRound(humanChoice, computerChoice) {
     console.log(`Your choice: ${humanChoice}`);
     console.log(`Computer's choice: ${computerChoice}`);
@@ -83,3 +79,13 @@ function playRound(humanChoice, computerChoice) {
     console.log(`You score is ${humanScore}`);
     console.log(`Computer's score is ${computerScore}`);
 }
+
+function handleClick(e) {
+    const humanChoice = e.target.textContent.toLowerCase();
+    const computerChoice = getComputerChoice();
+    playRound(humanChoice, computerChoice);
+}
+
+rockButton.addEventListener("click", handleClick);
+paperButton.addEventListener("click", handleClick);
+scissorsButton.addEventListener("click", handleClick);
