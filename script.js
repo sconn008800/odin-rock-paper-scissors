@@ -1,5 +1,6 @@
 let humanScore = 0;
 let computerScore = 0;
+let numberOfGames = 0;
 
 const rockButton = document.createElement("button");
 rockButton.textContent = "Rock";
@@ -10,9 +11,17 @@ paperButton.textContent = "Paper";
 const scissorsButton = document.createElement("button");
 scissorsButton.textContent = "Scissors";
 
-const choiceSelection = document.querySelector(".player-choice");
+const selection = document.querySelector(".rock-paper-scissors");
+selection.append(rockButton, paperButton, scissorsButton);
 
-choiceSelection.append(rockButton, paperButton, scissorsButton);
+const playerPick = document.querySelector(".player-pick");
+const computerPick = document.querySelector(".computer-pick");
+
+const gameResult = document.querySelector(".game-result");
+const gamesPlayed = document.querySelector(".games-played");
+
+const displayPlayerScore = document.querySelector(".player-score");
+const displayComputerScore = document.querySelector(".computer-score");
 
 function getComputerChoice() {
     let computerNumber = Math.random() * 100;
@@ -26,21 +35,21 @@ function getComputerChoice() {
 }
 
 function playRound(humanChoice, computerChoice) {
-    console.log(`Your choice: ${humanChoice}`);
-    console.log(`Computer's choice: ${computerChoice}`);
+    playerPick.textContent = `Your choice is ${humanChoice}`;
+    computerPick.textContent = `The computer's choice is ${computerChoice}`;
 
     switch (humanChoice) {
         case "rock":
             switch (computerChoice) {
                 case "rock":
-                    console.log("It's a tie! No winner.");
+                    gameResult.textContent = "It's a tie! No winner.";
                     break;
                 case "paper":
-                    console.log("You lose!");
+                    gameResult.textContent = "You lose!";
                     computerScore++;
                     break;
                 case "scissors":
-                    console.log("You win!");
+                    gameResult.textContent = "You win!";
                     humanScore++;
                     break;
             }
@@ -48,14 +57,14 @@ function playRound(humanChoice, computerChoice) {
         case "paper":
             switch (computerChoice) {
                 case "rock":
-                    console.log("You win!");
+                    gameResult.textContent = "You win!";
                     humanScore++;
                     break;
                 case "paper":
-                    console.log("It's a tie! No winner.");
+                    gameResult.textContent = "It's a tie! No winner.";
                     break;
                 case "scissors":
-                    console.log("You lose!");
+                    gameResult.textContent = "You lose!";
                     computerScore++;
                     break;
             }
@@ -63,21 +72,24 @@ function playRound(humanChoice, computerChoice) {
         case "scissors":
             switch (computerChoice) {
                 case "rock":
-                    console.log("You lose!");
+                    gameResult.textContent = "You lose!";
                     computerScore++;
                     break;
                 case "paper":
-                    console.log("You win!");
+                    gameResult.textContent = "You win!";
                     humanScore++;
                     break;
                 case "scissors":
-                    console.log("It's a tie! No winner");
+                    gameResult.textContent = "It's a tie! No winner";
                     break;
             }
             break;
     }
-    console.log(`You score is ${humanScore}`);
-    console.log(`Computer's score is ${computerScore}`);
+    numberOfGames++;
+    gamesPlayed.textContent = `Games played: ${numberOfGames}`;
+    
+    displayPlayerScore.textContent = `You score is ${humanScore}`;
+    displayComputerScore.textContent = `The computer's score is ${computerScore}`;
 }
 
 function handleClick(e) {
