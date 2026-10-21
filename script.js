@@ -23,6 +23,8 @@ const gamesPlayed = document.querySelector(".games-played");
 const displayPlayerScore = document.querySelector(".player-score");
 const displayComputerScore = document.querySelector(".computer-score");
 
+const displayWinner = document.querySelector(".winner");
+
 function getComputerChoice() {
     let computerNumber = Math.random() * 100;
     if (computerNumber <= 34) {
@@ -87,9 +89,25 @@ function playRound(humanChoice, computerChoice) {
     }
     numberOfGames++;
     gamesPlayed.textContent = `Games played: ${numberOfGames}`;
-    
+
     displayPlayerScore.textContent = `You score is ${humanScore}`;
     displayComputerScore.textContent = `The computer's score is ${computerScore}`;
+
+    if (humanScore == 5 || computerScore == 5) {
+        declareWinner();
+    }
+}
+
+function declareWinner() {
+    if (humanScore == 5) {
+        displayWinner.textContent = "You won 5 times. You win the game!";
+    }
+    if (computerScore == 5) {
+        displayWinner.textContent = "The computer won 5 times. The computer won the game!";
+    }
+    rockButton.disabled = true;
+    paperButton.disabled = true;
+    scissorsButton.disabled = true;
 }
 
 function handleClick(e) {
