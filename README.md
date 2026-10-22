@@ -1,1 +1,1 @@
-Play rock-paper-scissors against the computer. The human player is prompted for an answer while the computer is randomly assigned one of three choices. The entire game is run in the console window. Logs choices for both players and tracks scores for a total of 5 rounds.
+Play rock-paper-scissors against the computer. You can click a button for your choice while the selection for the computer is chosen randomly. JavaScript updates the DOM as the rounds are played. Once a player reaches 5 points, the winner is declared.
